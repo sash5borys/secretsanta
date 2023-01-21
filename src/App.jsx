@@ -41,12 +41,7 @@ const App = () => {
     e.preventDefault();
     try {
       if (person.firstName && person.lastName && person.file) {
-        const fileUrl = await uploadFile({
-          ...person.file,
-          ["name"]:
-            transliterate(person.firstName + person.lastName) +
-            person.file.name.substring(person.file.name.lastIndexOf(".")),
-        });
+        const fileUrl = await uploadFile(person.file);
         await uploadPersonData({ ...person, ["fileUrl"]: fileUrl });
         handleUpdate();
       }
@@ -73,9 +68,7 @@ const App = () => {
     <div className="app center-col">
       <header className="container header-container">
         <a className="app-logo">
-          <h1>
-            Секретний <br /> санта🎅
-          </h1>
+          <h1>🤫🎅</h1>
         </a>
       </header>
       <div className="container full-container">
